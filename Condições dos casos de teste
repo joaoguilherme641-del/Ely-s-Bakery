@@ -1,0 +1,38 @@
+public class SistemaPagamento {
+
+    public String processarPagamento(double valorPedido, double valorEntregue, String metodo) {
+        
+        // 1. Regra de Erro: Valor zero ou negativo
+        if (valorEntregue <= 0) {
+             return "Erro: Valor insuficiente";
+        }
+
+        // 2. Regra de Erro: Pagamento insuficiente em Dinheiro
+        if (metodo.equalsIgnoreCase("Dinheiro") && valorEntregue < valorPedido) {
+            return "Erro: Valor insuficiente";
+        }
+        
+        // 3. Regra Dinheiro (Sem troco e Com troco)
+        if (metodo.equalsIgnoreCase("Dinheiro")) {
+            if (valorEntregue == valorPedido) {
+                return "Sem troco";
+            } else {
+                double troco = valorEntregue - valorPedido;
+                // Formata para 2 casas decimais com PONTO (ex: 5.00)
+                return "Troco: " + String.format(java.util.Locale.US, "%.2f", troco);
+            }
+        }
+        
+        // 4. Regra Cartão
+        if (metodo.equalsIgnoreCase("Cartao")) {
+            return "Transacao Aprovada";
+        }
+        
+        // 5. Regra Pix
+        if (metodo.equalsIgnoreCase("Pix")) {
+            return "Comprovante enviado";
+        }
+
+        return "Metodo invalido";
+    }
+}
