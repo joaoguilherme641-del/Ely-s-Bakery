@@ -1,3 +1,5 @@
+-Condições para cada um dos casos de teste-
+
 public class SistemaPagamento {
 
     public String processarPagamento(double valorPedido, double valorEntregue, String metodo) {
@@ -37,6 +39,8 @@ public class SistemaPagamento {
     }
 }
 --------------------------------------------------------------------------------------------------------------------------------------
+-Casos de teste-
+
 import org.junit.Test;
 import org.junit.Assert;
 
